@@ -37,6 +37,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 
+// import { LoginService } from 'src/app/services/login.service';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -48,10 +49,10 @@ export class DashboardComponent implements OnInit {
   accountType: string = '';
   balance: number = 0;
 
-  constructor(private authService: AuthService) {}
+  constructor(private authservice: AuthService) {}
 
   ngOnInit() {
-    const details = this.authService.getCustomerDetails();
+    const details = this.authservice.getCustomerDetails();
     if (details) {
       this.username = details.username || 'Customer';
       this.accountNumber = details.accountNumber || '';
@@ -59,4 +60,5 @@ export class DashboardComponent implements OnInit {
       this.balance = details.balance || 0;
     }
   }
+
 }

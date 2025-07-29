@@ -125,7 +125,7 @@
 
 
 
-<li *ngIf="isEmployee() || isUser()" [class.active]="isActive('/fund-transfer')">
+<li *ngIf="isEmployee() || isUser() || isManager()" [class.active]="isActive('/fund-transfer')">
   <a routerLink="/fund-transfer"><i class="icon">💳</i> Fund Transfer</a>
 </li>
 

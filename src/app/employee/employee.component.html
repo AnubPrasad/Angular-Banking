@@ -4,22 +4,20 @@
   <table *ngIf="employees.length > 0" class="table table-striped table-bordered">
     <thead class="table-dark">
       <tr>
+        <th>Employee ID</th>
+        <th>User ID</th>
         <th>Name</th>
-        <th>Email</th>
-        <th>Phone</th>
-        <th>Address</th>
-        <th>Status</th>
-        <th>Date of Joining</th>
+        <th>Designation</th>
+        <th>Password</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let emp of paginatedEmployees">
+        <td>{{ emp.employeeID }}</td>
+        <td>{{ emp.userID }}</td>
         <td>{{ emp.name }}</td>
-        <td>{{ emp.email }}</td>
-        <td>{{ emp.phone }}</td>
-        <td>{{ emp.address }}</td>
-        <td>{{ emp.status }}</td>
-        <td>{{ emp.dateOfJoining }}</td>
+        <td>{{ emp.designation }}</td>
+        <td>{{ emp.password }}</td>
       </tr>
     </tbody>
   </table>

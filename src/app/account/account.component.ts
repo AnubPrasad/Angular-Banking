@@ -1,36 +1,95 @@
-// import { Component } from '@angular/core';
+// // import { Component } from '@angular/core';
 
-// @Component({
-//   selector: 'app-account',
-//   templateUrl: './account.component.html',
-//   styleUrls: ['./account.component.css']
-// })
-// export class AccountComponent {
+// // @Component({
+// //   selector: 'app-account',
+// //   templateUrl: './account.component.html',
+// //   styleUrls: ['./account.component.css']
+// // })
+// // export class AccountComponent {
 
+// // }
+
+
+
+// // import { Component } from '@angular/core';
+// // // import { Person } from '../models/person.model';
+// // import { Person } from '../person.model';
+
+// // @Component({
+// //   selector: 'app-account',
+// //   templateUrl: './account.component.html',
+// //   styleUrls: ['./account.component.css']
+// // })
+// // export class AccountComponent {
+// //   accounts: Person[] = [
+// //     {
+// //       name: 'Amit Verma',
+// //       email: 'amit@bank.com',
+// //       phone: '9988776655',
+// //       address: 'Chennai',
+// //       status: 'Active',
+// //       dateOfJoining: '2024-08-01'
+// //     }
+// //   ];
+// // }
+
+
+
+// import { Component, OnInit } from '@angular/core';
+// import { HttpClient } from '@angular/common/http';
+
+// export interface Person {
+//   name: string;
+//   email: string;
+//   phone: string;
+//   address: string;
+//   status: string;
+//   dateOfJoining: string;
 // }
 
-
-
-// import { Component } from '@angular/core';
-// // import { Person } from '../models/person.model';
-// import { Person } from '../person.model';
-
 // @Component({
 //   selector: 'app-account',
 //   templateUrl: './account.component.html',
 //   styleUrls: ['./account.component.css']
 // })
-// export class AccountComponent {
-//   accounts: Person[] = [
-//     {
-//       name: 'Amit Verma',
-//       email: 'amit@bank.com',
-//       phone: '9988776655',
-//       address: 'Chennai',
-//       status: 'Active',
-//       dateOfJoining: '2024-08-01'
+// export class AccountComponent implements OnInit {
+//   accounts: Person[] = [];
+//   pageSize = 10;
+//   currentPage = 1;
+
+//   constructor(private http: HttpClient) {}
+
+//   ngOnInit(): void {
+//     this.loadAccounts();
+//   }
+
+//   loadAccounts() {
+//     this.http.get<Person[]>('http://localhost:5100/api/Accounts').subscribe({
+//       next: (data) => {
+//         this.accounts = data;
+//       },
+//       error: (err) => {
+//         console.error('Error loading accounts:', err);
+//       }
+//     });
+//   }
+
+//   get paginatedAccounts(): Person[] {
+//     const start = (this.currentPage - 1) * this.pageSize;
+//     return this.accounts.slice(start, start + this.pageSize);
+//   }
+
+//   nextPage() {
+//     if (this.currentPage * this.pageSize < this.accounts.length) {
+//       this.currentPage++;
 //     }
-//   ];
+//   }
+
+//   prevPage() {
+//     if (this.currentPage > 1) {
+//       this.currentPage--;
+//     }
+//   }
 // }
 
 
@@ -38,13 +97,12 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-export interface Person {
-  name: string;
-  email: string;
-  phone: string;
-  address: string;
-  status: string;
-  dateOfJoining: string;
+export interface Account {
+  accountNumber: string;
+  customerID: number;
+  accountType: string;
+  balance: number;
+  isLocked: boolean;
 }
 
 @Component({
@@ -53,7 +111,7 @@ export interface Person {
   styleUrls: ['./account.component.css']
 })
 export class AccountComponent implements OnInit {
-  accounts: Person[] = [];
+  accounts: Account[] = [];
   pageSize = 10;
   currentPage = 1;
 
@@ -64,7 +122,7 @@ export class AccountComponent implements OnInit {
   }
 
   loadAccounts() {
-    this.http.get<Person[]>('http://localhost:5001/api/account-list').subscribe({
+    this.http.get<Account[]>('http://localhost:5100/api/Accounts').subscribe({
       next: (data) => {
         this.accounts = data;
       },
@@ -74,7 +132,7 @@ export class AccountComponent implements OnInit {
     });
   }
 
-  get paginatedAccounts(): Person[] {
+  get paginatedAccounts(): Account[] {
     const start = (this.currentPage - 1) * this.pageSize;
     return this.accounts.slice(start, start + this.pageSize);
   }
@@ -91,4 +149,3 @@ export class AccountComponent implements OnInit {
     }
   }
 }
-

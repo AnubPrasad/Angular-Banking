@@ -217,7 +217,7 @@ interface DecodedToken {
   providedIn: 'root'
 })
 export class AuthService {
-  private baseUrl = 'http://localhost:5001/api/Auth/login';  // Login API endpoint
+  private baseUrl = 'http://localhost:5100/api/Auth/login';  // Login API endpoint
   private apiUrl = 'https://your-banking-api.com';           // Other auth endpoints
 
   private loggedIn = new BehaviorSubject<boolean>(false);    // Reactive login state

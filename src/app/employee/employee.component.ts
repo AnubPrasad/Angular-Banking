@@ -40,16 +40,76 @@
 // }
 
 
+
+
+// import { Component, OnInit } from '@angular/core';
+// import { HttpClient } from '@angular/common/http';
+
+// export interface Employee {
+//   name: string;
+//   email: string;
+//   phone: string;
+//   address: string;
+//   status: string;
+//   dateOfJoining: string;
+// }
+
+// @Component({
+//   selector: 'app-employee',
+//   templateUrl: './employee.component.html',
+//   styleUrls: ['./employee.component.css']
+// })
+// export class EmployeeComponent implements OnInit {
+//   employees: Employee[] = [];
+//   pageSize = 10;
+//   currentPage = 1;
+
+//   constructor(private http: HttpClient) {}
+
+//   ngOnInit(): void {
+//     this.loadEmployees();
+//   }
+
+//   loadEmployees() {
+//     this.http.get<Employee[]>('http://localhost:5001/api/employee-list').subscribe({
+//       next: (data) => {
+//         this.employees = data;
+//       },
+//       error: (err) => {
+//         console.error('Error loading employee list:', err);
+//       }
+//     });
+//   }
+
+//   get paginatedEmployees(): Employee[] {
+//     const start = (this.currentPage - 1) * this.pageSize;
+//     return this.employees.slice(start, start + this.pageSize);
+//   }
+
+//   nextPage() {
+//     if (this.currentPage * this.pageSize < this.employees.length) {
+//       this.currentPage++;
+//     }
+//   }
+
+//   prevPage() {
+//     if (this.currentPage > 1) {
+//       this.currentPage--;
+//     }
+//   }
+// }
+
+
+
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 export interface Employee {
+  employeeID: number;
+  userID: number;
   name: string;
-  email: string;
-  phone: string;
-  address: string;
-  status: string;
-  dateOfJoining: string;
+  designation: string;
+  password: string;
 }
 
 @Component({
@@ -69,7 +129,7 @@ export class EmployeeComponent implements OnInit {
   }
 
   loadEmployees() {
-    this.http.get<Employee[]>('http://localhost:5001/api/employee-list').subscribe({
+    this.http.get<Employee[]>('http://localhost:5100/api/Employees').subscribe({
       next: (data) => {
         this.employees = data;
       },

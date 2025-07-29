@@ -1,4 +1,4 @@
-<div class="container">
+<!-- <div class="container">
   <h2>Customer Details</h2>
 
   <table *ngIf="customers.length > 0" class="table table-bordered">
@@ -26,7 +26,7 @@
 
   <p *ngIf="customers.length === 0">No customer records found.</p>
 
-  <!-- Pagination Controls -->
+ 
   <div class="d-flex justify-content-between mt-3">
     <button class="btn btn-secondary" (click)="prevPage()" [disabled]="currentPage === 1">
       Previous
@@ -37,6 +37,80 @@
       (click)="nextPage()"
       [disabled]="currentPage * pageSize >= customers.length"
     >
+      Next
+    </button>
+  </div>
+</div> -->
+
+<!-- 
+<div class="container">
+  <h2>Customer Details</h2>
+
+  <table *ngIf="customers.length > 0" class="table table-bordered">
+    <thead class="table-dark">
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Address</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let customer of paginatedCustomers">
+        <td>{{ customer.name }}</td>
+        <td>{{ customer.email }}</td>
+        <td>{{ customer.phone }}</td>
+        <td>{{ customer.address }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p *ngIf="customers.length === 0">No customer records found.</p>
+
+  <div class="d-flex justify-content-between mt-3">
+    <button class="btn btn-secondary" (click)="prevPage()" [disabled]="currentPage === 1">
+      Previous
+    </button>
+    <span class="align-self-center">Page {{ currentPage }}</span>
+    <button class="btn btn-secondary" (click)="nextPage()" [disabled]="currentPage * pageSize >= customers.length">
+      Next
+    </button>
+  </div>
+</div> -->
+
+
+
+<div class="container">
+  <h2>Customer Details</h2>
+
+  <table *ngIf="customers.length > 0" class="table table-bordered">
+    <thead class="table-dark">
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Address</th>
+        <!-- You can include password only for testing (not recommended in production) -->
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let customer of paginatedCustomers">
+        <td>{{ customer.name }}</td>
+        <td>{{ customer.email }}</td>
+        <td>{{ customer.phone }}</td>
+        <td>{{ customer.address }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p *ngIf="customers.length === 0">No customer records found.</p>
+
+  <div class="d-flex justify-content-between mt-3">
+    <button class="btn btn-secondary" (click)="prevPage()" [disabled]="currentPage === 1">
+      Previous
+    </button>
+    <span class="align-self-center">Page {{ currentPage }}</span>
+    <button class="btn btn-secondary" (click)="nextPage()" [disabled]="currentPage * pageSize >= customers.length">
       Next
     </button>
   </div>
