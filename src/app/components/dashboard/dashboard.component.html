@@ -86,18 +86,18 @@
     </nav>
   </div> -->
 
-  <div class="main-content">
-    <header class="dashboard-header">
-      <h1>Welcome back {{username}}! <i class="icon">👤</i></h1>
-      <!-- <div class="user-avatar"></div> -->
-    </header>
 
-   <div class="card saving-account-card">
-  <h3>Saving Account</h3>
-  <div class="account-info">
-    <div><strong>Account Number:</strong> 1234 5678 9012</div>
-    <div><strong>Account Type:</strong> Savings</div>
-    <div><strong>Balance:</strong> $5,432.10</div>
+  <div class="main-content">
+  <header class="dashboard-header">
+    <h1>Welcome back {{username}}! <i class="icon">👤</i></h1>
+  </header>
+
+  <div class="card saving-account-card">
+    <h3>{{ accountType }} Account</h3>
+    <div class="account-info">
+      <div><strong>Account Number:</strong> {{ accountNumber }}</div>
+      <div><strong>Account Type:</strong> {{ accountType }}</div>
+      <div><strong>Balance:</strong> ₹{{ balance | number: '1.2-2' }}</div>
+    </div>
   </div>
-</div>
 </div>

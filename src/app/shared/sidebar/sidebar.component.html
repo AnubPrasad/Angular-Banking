@@ -64,63 +64,68 @@
         <a routerLink="/dashboard">  <i class="icon">📊</i>Dashboard</a>
       </li>
       
-      <li [class.active]="isActive('/create-account')">
+      <li *ngIf="isEmployee()" [class.active]="isActive('/create-account')">
   <a routerLink="/create-account"><i class="icon">🆕</i> Create Account</a>
 </li>
 
 
-      <li *ngIf="isAdmin" [class.active]="isActive('/manage-account')">
+      <!-- <li  [class.active]="isActive('/manage-account')">
         <a routerLink="/manage-account"> <i class="icon">👤</i>Manage Account</a>
-      </li>
-      <li *ngIf="isAdmin" [class.active]="isActive('/search-account')">
+      </li> -->
+      <!-- <li *ngIf="isAdmin" [class.active]="isActive('/search-account')">
         <a routerLink="/search-account"><i class="icon">🔍</i>Search Account</a>
-      </li>
+      </li> -->
       <li [class.active]="isActive('/view-transaction')">
         <a routerLink="/view-transaction"><i class="icon">💸</i> View Transaction</a>
       </li>
-      <li *ngIf="!isAdmin" [class.active]="isActive('/view-balance')">
+      <!-- <li *ngIf="!isAdmin" [class.active]="isActive('/view-balance')">
         <a routerLink="/view-balance"> <i class="icon">💰</i>View Balance</a>
-      </li>
-      <li *ngIf="!isAdmin" [class.active]="isActive('/deposit-money')">
+      </li> -->
+      <li *ngIf="isEmployee()" [class.active]="isActive('/deposit-money')">
         <a routerLink="/deposit-money"> <i class="icon">🏦</i> Deposit Money</a>
       </li>
-      <li *ngIf="!isAdmin" [class.active]="isActive('/withdraw-money')">
+      <li *ngIf="isEmployee()" [class.active]="isActive('/withdraw-money')">
         <a routerLink="/withdraw-money"> <i class="icon">💰</i>Withdraw Money</a>
       </li>
-      <li [class.active]="isActive('/update-profile')">
+      <li *ngIf="isUser()" [class.active]="isActive('/update-profile')">
   <a routerLink="/update-profile"><i class="icon">📝</i> Update Profile</a>
 </li>
-      <li [class.active]="isActive('/emi-calculator')">
+      <li  *ngIf="isUser()" [class.active]="isActive('/emi-calculator')">
   <a routerLink="/emi-calculator"><i class="icon">📈</i> EMI Calculator</a>
 </li>
-<li [class.active]="isActive('/statement')">
+<li  *ngIf="isUser()" [class.active]="isActive('/statement')">
   <a routerLink="/statement"><i class="icon">🧾</i> Bank Statement</a>
 </li>
-<li [class.active]="isActive('/apply-loan')">
+<li *ngIf="isEmployee()" [class.active]="isActive('/apply-loan')">
   <a routerLink="/apply-loan"><i class="icon">📄</i> Apply Loan</a>
 </li>
-<li [class.active]="isActive('/app-add-beneficiary')">
+
+<li *ngIf="isUser()" [class.active]="isActive('/apply-loan')">
+  <a routerLink="/apply-loan"><i class="icon">📄</i> Apply Loan</a>
+</li>
+
+<li  *ngIf="isUser()" [class.active]="isActive('/app-add-beneficiary')">
   <a routerLink="/app-add-beneficiary"><i class="icon">➕</i> Add Beneficiary</a>
 </li>
-<li [class.active]="isActive('/pending-request')">
+<li *ngIf="isManager()" [class.active]="isActive('/pending-request')">
   <a routerLink="/pending-request"><i class="icon">🕓</i> Pending Request</a>
 </li>
-<li [class.active]="isActive('/customer')">
+<li *ngIf="isManager()" [class.active]="isActive('/customer')">
   <a routerLink="/app-customer"><i class="icon">👥</i> Customer</a>
 </li>
-<li [class.active]="isActive('/app-account')">
+<li *ngIf="isManager()" [class.active]="isActive('/app-account')">
   <a routerLink="/app-account"><i class="icon">🏦</i> Account</a>
 </li>
 <!-- <li [class.active]="isActive('/app-employee')">
   <a routerLink="/app-employee"><i class="icon">👔</i> Employees</a>
 </li> -->
-<li [class.active]="isActive('/employee')">
+<li *ngIf="isManager()" [class.active]="isActive('/employee')">
   <a routerLink="/employee"><i class="icon">👔</i> Employees</a>
 </li>
 
 
 
-<li [class.active]="isActive('/fund-transfer')">
+<li *ngIf="isEmployee() || isUser()" [class.active]="isActive('/fund-transfer')">
   <a routerLink="/fund-transfer"><i class="icon">💳</i> Fund Transfer</a>
 </li>
 

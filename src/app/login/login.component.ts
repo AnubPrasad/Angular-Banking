@@ -66,29 +66,48 @@ export class LoginComponent {
 
   constructor(private fb: FormBuilder, private router: Router, private authService: AuthService) {
     this.loginForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required]
-    });
+  username: ['', Validators.required],
+  password: ['', Validators.required]
+});
+
   }
 
-   onSubmit() {
-    if (this.loginForm.valid) {
-      // const { username, password } = this.loginForm.value;
-      // this.authService.login(username!, password!).subscribe({
-      const { email, password } = this.loginForm.value;
-this.authService.login(email!, password!).subscribe({
-        next: (success) => {
-          if (!success) {
-            this.errorMessage = 'Invalid username or password';
-          }
-        },
-        error: () => {
-          console.log(this.loginForm.value);
-          this.errorMessage = 'Login failed. Please try again.';
+//    onSubmit() {
+//     if (this.loginForm.valid) {
+//       // const { username, password } = this.loginForm.value;
+//       // this.authService.login(username!, password!).subscribe({
+//       const { email, password } = this.loginForm.value;
+// this.authService.login(email!, password!).subscribe({
+//         next: (success) => {
+//           if (!success) {
+//             this.errorMessage = 'Invalid username or password';
+//           }
+//         },
+//         error: () => {
+//           console.log(this.loginForm.value);
+//           this.errorMessage = 'Login failed. Please try again.';
+//         }
+//       });
+//     }
+//   }
+
+onSubmit() {
+  if (this.loginForm.valid) {
+    const { username, password } = this.loginForm.value;
+    this.authService.login(username, password).subscribe({
+      next: (success) => {
+        if (!success) {
+          this.errorMessage = 'Invalid username or password';
         }
-      });
-    }
+      },
+      error: () => {
+        console.log(this.loginForm.value);
+        this.errorMessage = 'Login failed. Please try again.';
+      }
+    });
   }
+}
+
 
   togglePasswordVisibility() {
     this.showPassword = !this.showPassword;
