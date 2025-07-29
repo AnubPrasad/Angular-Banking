@@ -11,9 +11,9 @@
 
 
 
-
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-update-profile',
@@ -23,17 +23,17 @@ export class UpdateProfileComponent {
   profileForm: FormGroup;
   successMessage = '';
   submitted = false;
+  isLoading = false;
 
-  constructor(private fb: FormBuilder) {
+  private apiUrl = 'http://localhost:5001/api/update-customer';
+
+  constructor(private fb: FormBuilder, private http: HttpClient) {
     this.profileForm = this.fb.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       phone: [
         '',
-        [
-          Validators.required,
-          Validators.pattern(/^[0-9]{10}$/) // exactly 10 digits
-        ]
+        [Validators.required, Validators.pattern(/^[0-9]{10}$/)]
       ],
       password: [
         '',
@@ -54,10 +54,24 @@ export class UpdateProfileComponent {
     this.submitted = true;
 
     if (this.profileForm.valid) {
-      console.log(this.profileForm.value);
-      this.successMessage = '✅ Profile updated successfully!';
+      this.isLoading = true;
+      this.successMessage = '';
+
+      this.http.post<any>(this.apiUrl, this.profileForm.value).subscribe({
+        next: (response) => {
+          this.isLoading = false;
+          this.successMessage = response.message || '✅ Profile updated successfully!';
+          this.profileForm.reset();
+          this.submitted = false;
+        },
+        error: (err) => {
+          this.isLoading = false;
+          this.successMessage =
+            err.error?.message || '❌ Update failed. Please try again.';
+        }
+      });
     } else {
-      this.successMessage = '❌ Not updated, check the fields.';
+      this.successMessage = '❌ Please fix the validation errors.';
     }
 
     setTimeout(() => (this.successMessage = ''), 4000);

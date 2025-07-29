@@ -79,6 +79,8 @@ export class AuthService {
     }
   }
 
+  
+
   //   getCustomerDetails(): DecodedToken | null {
   //   const token = this.getToken();
   //   if (!token) return null;

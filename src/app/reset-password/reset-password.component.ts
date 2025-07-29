@@ -73,32 +73,63 @@ export class ResetPasswordComponent {
     return /[!@#$%^&*(),.?":{}|<>]/.test(this.resetPasswordForm.get('newPassword')?.value);
   }
 
+  // resetPassword() {
+    // if (this.resetPasswordForm.valid) {
+    //   this.isLoading = true;
+    //   this.errorMessage = '';
+    //   this.successMessage = ''; 
+
+    //   const resetData = {
+    //     email: this.email,
+    //     newPassword: this.resetPasswordForm.value.newPassword
+    //   };
+
+    //   this.authService.resetPassword(resetData)
+    //     .subscribe({
+    //       next: (response) => {
+    //         this.isLoading = false;
+    //         this.successMessage = 'Password reset successfully! You can now login with your new password.';
+    //         // Auto navigate to login after 3 seconds
+    //         setTimeout(() => {
+    //           this.router.navigate(['/login']);
+    //         }, 3000);
+    //       },
+    //       error: (err) => {
+    //         this.isLoading = false;
+    //         this.errorMessage = err.error.message || 'Password reset failed. Please try again.';
+    //       }
+    //     });
+    // }
+  // }
+
   resetPassword() {
-    if (this.resetPasswordForm.valid) {
-      this.isLoading = true;
-      this.errorMessage = '';
-      this.successMessage = '';
+  if (this.resetPasswordForm.valid) {
+    this.isLoading = true;
+    this.errorMessage = '';
+    this.successMessage = '';
 
-      const resetData = {
-        email: this.email,
-        newPassword: this.resetPasswordForm.value.newPassword
-      };
+    const resetData = {
+      email: this.email,
+      newPassword: this.resetPasswordForm.value.newPassword
+    };
 
-      this.authService.resetPassword(resetData)
-        .subscribe({
-          next: (response) => {
-            this.isLoading = false;
-            this.successMessage = 'Password reset successfully! You can now login with your new password.';
-            // Auto navigate to login after 3 seconds
-            setTimeout(() => {
-              this.router.navigate(['/login']);
-            }, 3000);
-          },
-          error: (err) => {
-            this.isLoading = false;
-            this.errorMessage = err.error.message || 'Password reset failed. Please try again.';
-          }
-        });
-    }
+    this.authService.resetPassword(resetData)
+      .subscribe({
+        next: (response) => {
+          this.isLoading = false;
+          this.successMessage = 'Password reset successfully! You can now login with your new password.';
+          setTimeout(() => {
+            this.router.navigate(['/login']);
+          }, 3000);
+        },
+        error: (err) => {
+          this.isLoading = false;
+          this.errorMessage = err.error.message || 'Password reset failed. Please try again.';
+        }
+      });
+  } else {
+    this.errorMessage = 'Please fix validation errors before submitting.';
   }
+}
+
 }

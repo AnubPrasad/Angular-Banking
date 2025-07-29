@@ -1,20 +1,34 @@
 <div class="container">
-  <h2>Customer Details</h2>
-  <table>
-    <thead>
+  <h2>Employee Details</h2>
+
+  <table *ngIf="employees.length > 0" class="table table-striped table-bordered">
+    <thead class="table-dark">
       <tr>
-        <th>Name</th><th>Email</th><th>Phone</th><th>Address</th><th>Status</th><th>Date of Joining</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Address</th>
+        <th>Status</th>
+        <th>Date of Joining</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let customer of customers">
-        <td>{{ customer.name }}</td>
-        <td>{{ customer.email }}</td>
-        <td>{{ customer.phone }}</td>
-        <td>{{ customer.address }}</td>
-        <td>{{ customer.status }}</td>
-        <td>{{ customer.dateOfJoining }}</td>
+      <tr *ngFor="let emp of paginatedEmployees">
+        <td>{{ emp.name }}</td>
+        <td>{{ emp.email }}</td>
+        <td>{{ emp.phone }}</td>
+        <td>{{ emp.address }}</td>
+        <td>{{ emp.status }}</td>
+        <td>{{ emp.dateOfJoining }}</td>
       </tr>
     </tbody>
   </table>
+
+  <p *ngIf="employees.length === 0">No employee records found.</p>
+
+  <div class="d-flex justify-content-between mt-3">
+    <button class="btn btn-secondary" (click)="prevPage()" [disabled]="currentPage === 1">Previous</button>
+    <span class="align-self-center">Page {{ currentPage }}</span>
+    <button class="btn btn-secondary" (click)="nextPage()" [disabled]="currentPage * pageSize >= employees.length">Next</button>
+  </div>
 </div>

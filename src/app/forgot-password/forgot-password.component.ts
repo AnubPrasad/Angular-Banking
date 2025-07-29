@@ -110,6 +110,7 @@
 // }
 
 
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -123,7 +124,7 @@ export class ForgotPasswordComponent {
   forgotPasswordForm: FormGroup;
   errorMessage = '';
   
-  constructor(private fb: FormBuilder, private router: Router) {
+  constructor(private fb: FormBuilder, private router: Router, private http: HttpClient) {
     this.forgotPasswordForm = this.fb.group({
       customerId: ['', [Validators.required, Validators.minLength(2)]],
       email: ['', [Validators.required, Validators.email]],
@@ -137,25 +138,36 @@ export class ForgotPasswordComponent {
       console.log('Form values:', this.forgotPasswordForm.value);
     });
   }
-
-  verifyUser() {
-    console.log('Form validity:', this.forgotPasswordForm.valid);
-    
+verifyUser() {
     if (this.forgotPasswordForm.valid) {
       const formData = this.forgotPasswordForm.value;
-      
-      // For demo purposes - replace with actual validation
-      if (formData.customerId && formData.email && formData.mobile) {
-        this.router.navigate(['/reset-password'], {
-          state: { email: formData.email }
+
+      // 🔗 API call to backend
+      this.http.post<boolean>('http://localhost:5001/api/forgot-password', formData)
+        .subscribe({
+          next: (isVerified: boolean) => {
+            if (isVerified) {
+              console.log(this.forgotPasswordForm.value);
+              // ✅ Navigate only if response is true
+              this.router.navigate(['/reset-password'], {
+                state: { email: formData.email }
+              });
+            } else {
+              console.log(this.forgotPasswordForm.value);
+              // ❌ Don't show error if false, just return
+              return;
+            }
+          },
+          error: (err: any) => {
+            console.error('API error:', err);
+            // ❌ Still don't show error, just stop here silently
+          }
         });
-      } else {
-        this.errorMessage = 'Verification failed. Please check your details.';
-      }
     } else {
       this.errorMessage = 'Please fill all fields correctly.';
     }
   }
+
 
   cancel() {
     this.router.navigate(['/login']);
