@@ -6,7 +6,7 @@
     <button (click)="onShowClick()">Show Beneficiary</button>
   </div>
 
-  <!-- Add Beneficiary Form -->
+  
   <div *ngIf="showAdd" class="form-section">
     <h3>Add Beneficiary</h3>
     <label>Beneficiary Account Number:</label>
@@ -21,7 +21,7 @@
     <p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>
   </div>
 
-  <!-- Show Beneficiary -->
+
   <div *ngIf="showDetails && verifiedBeneficiary" class="details-section">
     <h3>Beneficiary Details</h3>
     <p><strong>Status:</strong> {{ verifiedBeneficiary.status }}</p>
@@ -30,4 +30,7 @@
 
     <button (click)="transferToBeneficiary()">Transfer</button>
   </div>
-</div>
+</div> 
+
+
+

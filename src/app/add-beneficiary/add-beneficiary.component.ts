@@ -8,6 +8,8 @@
 // export class AddBeneficiaryComponent {
 
 // }
+
+
 import { Component } from '@angular/core';
 
 @Component({

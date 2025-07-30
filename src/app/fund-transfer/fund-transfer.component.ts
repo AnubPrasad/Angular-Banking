@@ -67,8 +67,8 @@ export class FundTransferComponent {
 
   constructor(private fb: FormBuilder, private http: HttpClient) {
     this.transferForm = this.fb.group({
-      fromAccount: ['', [Validators.required, Validators.pattern(/^\d{10,20}$/)]],
-      toAccount: ['', [Validators.required, Validators.pattern(/^\d{10,20}$/)]],
+      fromAccount: ['', [Validators.required]],
+      toAccount: ['', [Validators.required]],
       amount: ['', [Validators.required, Validators.min(1)]],
     });
   }
@@ -78,29 +78,27 @@ export class FundTransferComponent {
   }
 
   onSubmit() {
-    this.submitted = true;
+  this.submitted = true;
 
-    if (this.transferForm.valid) {
-      const transferData = this.transferForm.value;
+  const transferData = this.transferForm.value;
 
-      this.http.post<{ success: boolean; message: string }>(
-        'http://localhost:5001/api/fund-transfer',
-        transferData
-      ).subscribe({
-        next: (res) => {
-          this.responseMessage = res.success
-            ? '✅ ' + res.message
-            : '❌ ' + res.message;
-        },
-        error: (err) => {
-          this.responseMessage = '❌ Error while processing transaction.';
-          console.error('Transfer Error:', err);
+  this.http.post<any>('http://localhost:5100/api/Transactions/transfer', transferData)
+    .subscribe({
+      next: (res) => {
+        console.log(res);
+        if (res && res.status === 'Success') {
+          this.responseMessage = `✅ Transfer successful! ₹${res.amount} sent from ${res.from} to ${res.to} on ${new Date(res.date).toLocaleString()}`;
+        } else {
+          this.responseMessage = '❌ Transfer failed.';
         }
-      });
-    } else {
-      this.responseMessage = '❌ Please fill all fields correctly.';
-    }
+      },
+      error: (err) => {
+        console.error('Transfer error:', err);
+        this.responseMessage = '❌ Error while processing transaction.';
+      }
+    });
 
-    setTimeout(() => (this.responseMessage = ''), 4000);
-  }
+  setTimeout(() => (this.responseMessage = ''), 4000);
+}
+
 }

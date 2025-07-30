@@ -102,6 +102,7 @@ const routes: Routes = [
    { path: 'create-account', component: CreateAccountComponent },
    { path: 'fund-transfer', component: FundTransferComponent },
    { path: 'apply-loan', component: ApplyLoanComponent },
+   { path: 'app-deposit-money', component: DepositMoneyComponent},
    { path: 'app-add-beneficiary', component: AddBeneficiaryComponent },
    { path: 'pending-request', component: PendingRequestComponent },
    { path: 'app-customer', component: CustomerComponent },

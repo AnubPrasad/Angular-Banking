@@ -195,7 +195,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject, Observable, of } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
+import { catchError, map, switchMap, tap } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { jwtDecode } from 'jwt-decode';
 
@@ -232,7 +232,31 @@ export class AuthService {
         this.loggedIn.next(true);
         this.router.navigate(['/dashboard']);
       }),
+
       map(() => true)
+     
+    //   tap(response => {
+    //   // Store token in localStorage
+    //   localStorage.setItem('token', response.token);
+    // }),
+    // switchMap(() => {
+    //   return this.http.get<any>(`${this.baseUrl}/getUserDetails/${username}`);
+    // }),
+    // tap(userDetails => {
+    //   // Store user details in localStorage
+    //   localStorage.setItem('customerId', userDetails.customerId);
+    //   localStorage.setItem('accountNumber', userDetails.accountNumber);
+    //   localStorage.setItem('accountType', userDetails.accountType);
+
+    //   this.loggedIn.next(true);
+    //   this.router.navigate(['/dashboard']);
+    // }),
+    // map(() => true),
+    // catchError(err => {
+    //   console.error('Login failed:', err);
+    //   return of(false);
+    // })
+
     );
   }
 

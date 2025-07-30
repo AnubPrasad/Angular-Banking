@@ -61,7 +61,10 @@ export class CreateAccountComponent {
   statusMessage = '';
   isLoading = false;
 
-  private apiUrl = 'http://localhost:5001/api/create-customer';
+  private apiUrl = 'http://localhost:5100/api/Customers';
+
+  // http://localhost:5100/api/Customers
+  // http://localhost:5100/api/Customers
 
   constructor(private fb: FormBuilder, private http: HttpClient) {
     this.accountForm = this.fb.group({

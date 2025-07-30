@@ -75,36 +75,36 @@
       <!-- <li *ngIf="isAdmin" [class.active]="isActive('/search-account')">
         <a routerLink="/search-account"><i class="icon">🔍</i>Search Account</a>
       </li> -->
-      <li [class.active]="isActive('/view-transaction')">
+      <!-- <li [class.active]="isActive('/view-transaction')">
         <a routerLink="/view-transaction"><i class="icon">💸</i> View Transaction</a>
-      </li>
+      </li> -->
       <!-- <li *ngIf="!isAdmin" [class.active]="isActive('/view-balance')">
         <a routerLink="/view-balance"> <i class="icon">💰</i>View Balance</a>
       </li> -->
-      <li *ngIf="isEmployee()" [class.active]="isActive('/deposit-money')">
-        <a routerLink="/deposit-money"> <i class="icon">🏦</i> Deposit Money</a>
+      <li *ngIf="isEmployee()" [class.active]="isActive('/app-deposit-money')">
+        <a routerLink="/app-deposit-money"> <i class="icon">🏦</i> Deposit Money</a>
       </li>
       <li *ngIf="isEmployee()" [class.active]="isActive('/withdraw-money')">
         <a routerLink="/withdraw-money"> <i class="icon">💰</i>Withdraw Money</a>
       </li>
-      <li *ngIf="isUser()" [class.active]="isActive('/update-profile')">
+      <li *ngIf="isCustomer()" [class.active]="isActive('/update-profile')">
   <a routerLink="/update-profile"><i class="icon">📝</i> Update Profile</a>
 </li>
-      <li  *ngIf="isUser()" [class.active]="isActive('/emi-calculator')">
+      <li  *ngIf="isCustomer()" [class.active]="isActive('/emi-calculator')">
   <a routerLink="/emi-calculator"><i class="icon">📈</i> EMI Calculator</a>
 </li>
-<li  *ngIf="isUser()" [class.active]="isActive('/statement')">
+<li  *ngIf="isCustomer()" [class.active]="isActive('/statement')">
   <a routerLink="/statement"><i class="icon">🧾</i> Bank Statement</a>
 </li>
 <li *ngIf="isEmployee()" [class.active]="isActive('/apply-loan')">
   <a routerLink="/apply-loan"><i class="icon">📄</i> Apply Loan</a>
 </li>
 
-<li *ngIf="isUser()" [class.active]="isActive('/apply-loan')">
+<li *ngIf="isCustomer()" [class.active]="isActive('/apply-loan')">
   <a routerLink="/apply-loan"><i class="icon">📄</i> Apply Loan</a>
 </li>
 
-<li  *ngIf="isUser()" [class.active]="isActive('/app-add-beneficiary')">
+<li  *ngIf="isCustomer()" [class.active]="isActive('/app-add-beneficiary')">
   <a routerLink="/app-add-beneficiary"><i class="icon">➕</i> Add Beneficiary</a>
 </li>
 <li *ngIf="isManager()" [class.active]="isActive('/pending-request')">
@@ -125,7 +125,7 @@
 
 
 
-<li *ngIf="isEmployee() || isUser() || isManager()" [class.active]="isActive('/fund-transfer')">
+<li *ngIf="isEmployee() || isCustomer() || isManager()" [class.active]="isActive('/fund-transfer')">
   <a routerLink="/fund-transfer"><i class="icon">💳</i> Fund Transfer</a>
 </li>
 

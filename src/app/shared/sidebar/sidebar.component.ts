@@ -111,8 +111,8 @@ export class SidebarComponent implements OnInit {
     return this.role === 'employee';
   }
 
-  isUser(): boolean {
-    return this.role === 'user';
+  isCustomer(): boolean {
+    return this.role === 'customer';
   }
 
   isManager(): boolean {
