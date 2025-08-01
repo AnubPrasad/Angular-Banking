@@ -11,8 +11,8 @@
 
 
 
-import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from '../services/auth.service';
 
@@ -20,7 +20,7 @@ import { AuthService } from '../services/auth.service';
   selector: 'app-update-profile',
   templateUrl: './update-profile.component.html',
 })
-export class UpdateProfileComponent {
+export class UpdateProfileComponent implements OnInit {
   profileForm: FormGroup;
   successMessage = '';
   submitted = false;
@@ -46,13 +46,14 @@ userData: any;
   }
 
 ngOnInit(): void {
-  // this.userData = this.authService.getCustomerDetails();
+  this.userData = this.authService.getCustomerDetails();
   
   if (this.userData?.username) {
     this.http.get<any[]>('http://localhost:5100/api/customers')
       .subscribe({
         next: (customers) => {
           const matchedCustomer = customers.find(c => c.name === this.userData.username);
+          console.log(matchedCustomer);
           if (matchedCustomer) {
             this.customerId = matchedCustomer.customerID;
 
@@ -80,7 +81,7 @@ ngOnInit(): void {
 
   onSubmit() {
     this.submitted = true;
-
+    console.log("submitted");
     if (this.profileForm.valid) {
       this.isLoading = true;
       this.successMessage = '';
@@ -98,6 +99,7 @@ ngOnInit(): void {
       //       err.error?.message || '❌ Update failed. Please try again.';
       //   }
       // });
+
     if (this.customerId !== null) {
   const url = `http://localhost:5100/api/customers/${this.customerId}`;
   this.http.put(url, this.profileForm.value).subscribe({
@@ -113,6 +115,8 @@ ngOnInit(): void {
       this.successMessage = '❌ Update failed. Please try again.';
     }
   });
+}else{
+  console.log("customerId is null");
 }
     } else {
       this.successMessage = '❌ Please fix the validation errors.';

@@ -26,7 +26,7 @@
   font-weight: bold;
   margin-bottom: 0;
 } */
-
+/* 
 
 .dashboard {
   padding: 20px;
@@ -137,7 +137,6 @@
   background: #2980b9;
 }
 
-/* Special colors for different offers */
 .fd-offer {
   border-top: 4px solid #27ae60;
 }
@@ -148,4 +147,238 @@
 
 .new-feature {
   border-top: 4px solid #9b59b6;
+}
+ */
+
+ /* with cards */
+/* 
+.dashboard-container {
+  padding: 2rem;
+  background: #f8f9fa;
+  min-height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.dashboard-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.dashboard-header h1 {
+  font-size: 2.2rem;
+  margin-bottom: 0.5rem;
+  color: #2c3e50;
+}
+
+.dashboard-header .subtitle {
+  font-size: 1rem;
+  color: #555;
+}
+
+.username {
+  color: #007bff;
+  font-weight: bold;
+}
+
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  padding: 1rem;
+}
+
+.feature-card {
+  background-color: #ffffff;
+  border-radius: 15px;
+  padding: 1.5rem;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+}
+
+.feature-card h2 {
+  font-size: 1.3rem;
+  color: #34495e;
+  margin-bottom: 0.5rem;
+}
+
+.feature-card p {
+  font-size: 0.95rem;
+  color: #666;
+} */
+
+/* 
+
+.dashboard-layout {
+  display: flex;
+}
+
+.main-content {
+  margin-left: 220px; 
+  padding: 2rem;
+  flex: 1;
+  background-color: #f5f6fa;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+.dashboard-header h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.username {
+  color: #007bff;
+  font-weight: bold;
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 2rem;
+}
+
+.feature-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+}
+
+.feature-card {
+  background-color: white;
+  border-radius: 12px;
+  padding: 1.25rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease-in-out;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+}
+
+.feature-card h4 {
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+}
+
+.upcoming-section {
+  margin-top: 2rem;
+}
+
+.upcoming-heading {
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #333;
+  position: relative;
+}
+
+.upcoming-heading::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 4px;
+  background-color: #007bff;
+  margin-top: 0.4rem;
+  border-radius: 4px;
+} */
+
+.dashboard-layout {
+  display: flex;
+}
+
+.main-content {
+  margin-left: 220px;
+  padding: 2rem;
+  flex: 1;
+  /* background-color: rgba(255, 255, 255, 0.85);  */
+  min-height: 100vh;
+  box-sizing: border-box;
+  border-radius: 10px;
+}
+
+.dashboard-header {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;     /* Horizontal center */
+  justify-content: center; /* Vertical alignment (if height is enough) */
+  text-align: center;
+  margin-top: 4rem;
+  margin-bottom: 2rem;
+}
+
+.username {
+  color: #007bff;
+  font-weight: bold;
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 2rem;
+}
+
+
+.upcoming-main-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #2c3e50;
+  text-align: center;
+  margin-bottom: 2rem;
+  text-shadow: 1px 1px 2px #ccc;
+}
+
+.feature-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+}
+
+.feature-card {
+  background-color: white;
+  border-radius: 12px;
+  padding: 1.25rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease-in-out;
+  border-color:black;
+  border: 2px solid black; 
+}
+
+
+.feature-card:hover {
+  transform: translateY(-5px);
+}
+
+.feature-card h4 {
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+}
+
+.upcoming-section {
+  margin-top: 2rem;
+}
+
+.upcoming-heading {
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #333;
+  position: relative;
+}
+
+.upcoming-heading::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 4px;
+  background-color: #007bff;
+  margin-top: 0.4rem;
+  border-radius: 4px;
 }

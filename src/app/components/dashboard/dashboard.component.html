@@ -65,9 +65,8 @@
 </div> -->
 
 
-<div class="dashboard">
-  <div class="sidebar">
-    <!-- <div class="logo">PayNow</div>
+
+ <!-- <div class="logo">PayNow</div>
     <nav>
       <ul class="main-menu">
         <li class="active"><i class="icon">📊</i> Dashboard</li>
@@ -86,6 +85,11 @@
     </nav>
   </div> -->
 
+<!-- 
+<div class="dashboard">
+  <div class="sidebar">
+   
+
 
   <div class="main-content">
   <header class="dashboard-header">
@@ -99,5 +103,69 @@
       <div><strong>Account Type:</strong> {{ accountType }}</div>
       <div><strong>Balance:</strong> ₹{{ balance | number: '1.2-2' }}</div>
     </div>
+  </div>
+</div> -->
+
+<!-- 
+<div class="dashboard-container">
+  <header class="dashboard-header">
+    <h1>Welcome back, <span class="username">{{ username }}</span>! 🎉</h1>
+    <p class="subtitle">Here’s what’s coming soon in your banking experience.</p>
+  </header>
+
+  <div class="cards-container">
+    <div class="feature-card">
+      <h2>📱 Mobile Banking App</h2>
+      <p>Access your bank account securely from your phone.</p>
+    </div>
+
+    <div class="feature-card">
+      <h2>💳 Virtual Debit Card</h2>
+      <p>Get a digital card instantly and start shopping online.</p>
+    </div>
+
+    <div class="feature-card">
+      <h2>🔔 Smart Notifications</h2>
+      <p>Real-time alerts for all your transactions and updates.</p>
+    </div>
+
+    <div class="feature-card">
+      <h2>💰 Investment Plans</h2>
+      <p>Choose from curated mutual funds and save smarter.</p>
+    </div>
+  </div>
+</div> -->
+
+
+<div class="dashboard-layout">
+  <div class="main-content">
+    <header class="dashboard-header">
+      <h1>Welcome back, <span class="username">{{ username }}</span>! 🎉</h1>
+      <p class="subtitle">Here's what's coming soon in your banking experience.</p>
+    </header>
+
+    <section class="upcoming-section">
+      <!-- <h2 class="upcoming-heading">🚀 Upcoming Features</h2> -->
+<h2 class="upcoming-main-title">✨ Upcoming Features</h2>
+
+      <div class="feature-cards">
+        <div class="feature-card ">
+          <h4>📱 Mobile Banking App</h4>
+          <p>Experience secure banking from your phone.</p>
+        </div>
+        <div class="feature-card ">
+          <h4>💳 Virtual Debit Card</h4>
+          <p>Get a digital card instantly and shop online.</p>
+        </div>
+        <div class="feature-card ">
+          <h4>🔔 Smart Notifications</h4>
+          <p>Real-time alerts for your transactions and updates.</p>
+        </div>
+        <div class="feature-card">
+          <h4>💰 Investment Plans</h4>
+          <p>Choose curated mutual funds and save smarter.</p>
+        </div>
+      </div>
+    </section>
   </div>
 </div>

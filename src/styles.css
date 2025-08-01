@@ -1,7 +1,15 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
+  background-image: url('assets/images/Banking2.jpg');
+  background-size: cover;           /* Cover full screen */
+  background-position: center;      /* Center the image */
+  background-repeat: no-repeat;     /* Don't repeat the image */
+  height: 100vh;                    /* Full screen height */                    
+
+
 }
+
 
 /* Login page styles */
 .login-container {

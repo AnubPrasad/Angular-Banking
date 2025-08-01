@@ -84,15 +84,15 @@
       <li *ngIf="isEmployee()" [class.active]="isActive('/app-deposit-money')">
         <a routerLink="/app-deposit-money"> <i class="icon">🏦</i> Deposit Money</a>
       </li>
-      <li *ngIf="isEmployee()" [class.active]="isActive('/withdraw-money')">
-        <a routerLink="/withdraw-money"> <i class="icon">💰</i>Withdraw Money</a>
+      <li *ngIf="isEmployee()" [class.active]="isActive('/app-withdraw-money')">
+        <a routerLink="/app-withdraw-money"> <i class="icon">💰</i>Withdraw Money</a>
       </li>
       <li *ngIf="isCustomer()" [class.active]="isActive('/update-profile')">
   <a routerLink="/update-profile"><i class="icon">📝</i> Update Profile</a>
 </li>
-      <li  *ngIf="isCustomer()" [class.active]="isActive('/emi-calculator')">
+      <!-- <li  *ngIf="isCustomer()" [class.active]="isActive('/emi-calculator')">
   <a routerLink="/emi-calculator"><i class="icon">📈</i> EMI Calculator</a>
-</li>
+</li> -->
 <li  *ngIf="isCustomer()" [class.active]="isActive('/statement')">
   <a routerLink="/statement"><i class="icon">🧾</i> Bank Statement</a>
 </li>

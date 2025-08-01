@@ -34,31 +34,56 @@
 
 
 
-import { Component, OnInit } from '@angular/core';
-import { AuthService } from 'src/app/services/auth.service';
+// import { Component, OnInit } from '@angular/core';
+// import { AuthService } from 'src/app/services/auth.service';
 
 // import { LoginService } from 'src/app/services/login.service';
+// @Component({
+//   selector: 'app-dashboard',
+//   templateUrl: './dashboard.component.html',
+//   styleUrls: ['./dashboard.component.css']
+// })
+// export class DashboardComponent implements OnInit {
+//   username: string = 'Customer';
+//   accountNumber: string = '';
+//   accountType: string = '';
+//   balance: number = 0;
+
+//   constructor(private LoginService: LoginService) {}
+
+//   ngOnInit() {
+//     const details = this.LoginService.getCustomerDetails();
+//     if (details) {
+//       this.username = details.username || 'Customer';
+//       this.accountNumber = details.accountNumber || '';
+//       this.accountType = details.accountType || '';
+//       this.balance = details.balance || 0;
+//     }
+//   }
+
+// }
+
+
+
+import { Component, OnInit } from '@angular/core';
+// import { LoginService } from 'src/app/services/login.service';
+import { AuthService } from 'src/app/services/auth.service';
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  username: string = 'Customer';
-  accountNumber: string = '';
-  accountType: string = '';
-  balance: number = 0;
+  username: string = 'User';
 
-  constructor(private authservice: AuthService) {}
+  constructor(private loginService: AuthService) {}
 
   ngOnInit() {
-    const details = this.authservice.getCustomerDetails();
+    const details = this.loginService.getCustomerDetails();
     if (details) {
-      this.username = details.username || 'Customer';
-      this.accountNumber = details.accountNumber || '';
-      this.accountType = details.accountType || '';
-      this.balance = details.balance || 0;
+      this.username = details.username || 'User';
     }
   }
-
 }
+

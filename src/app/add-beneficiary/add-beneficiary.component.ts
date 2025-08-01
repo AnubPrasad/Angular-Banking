@@ -10,7 +10,10 @@
 // }
 
 
+
 import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-beneficiary',
@@ -30,6 +33,8 @@ export class AddBeneficiaryComponent {
 
   verifiedBeneficiary: any = null;
 
+  constructor(private http: HttpClient,private router: Router) {}
+
   onAddClick() {
     this.showAdd = true;
     this.showDetails = false;
@@ -41,7 +46,6 @@ export class AddBeneficiaryComponent {
     this.showAdd = false;
     this.showDetails = true;
 
-    // Simulate beneficiary details
     this.verifiedBeneficiary = {
       status: 'Active',
       accountNumber: '1234567890',
@@ -52,16 +56,28 @@ export class AddBeneficiaryComponent {
   submitBeneficiary() {
     const { accountNumber, customerId } = this.beneficiary;
 
-    // Simulate validation
-    if (accountNumber === '1234567890' && customerId === 'CUST001') {
-      this.successMessage = 'Beneficiary added successfully!';
-      this.errorMessage = '';
-    } else {
-      this.successMessage = '';
-      this.errorMessage = 'Invalid account number or customer ID.';
-    }
+    const body = {
+      beneficiaryID: 0,  // backend usually ignores ID on insert
+      customerID: parseInt(customerId),
+      beneficiaryAccountNumber: accountNumber
+    };
+// need to add the this.localstorage.customerid!=customerid in the below method
 
-    // Clear form fields after 3 sec
+    this.http.post('http://localhost:5100/api/Beneficiaries', body)
+      .subscribe({
+        next: (res) => {
+          this.successMessage = 'Beneficiary added successfully!';
+          this.errorMessage = '';
+          this.beneficiary = { accountNumber: '', customerId: '' };
+        },
+        error: (err) => {
+          this.errorMessage = 'Failed to add beneficiary.';
+          this.successMessage = '';
+          console.error(err);
+        }
+      });
+
+    // Clear messages after 3 seconds
     setTimeout(() => {
       this.successMessage = '';
       this.errorMessage = '';
@@ -69,6 +85,6 @@ export class AddBeneficiaryComponent {
   }
 
   transferToBeneficiary() {
-    alert('Initiating transfer...');
+    this.router.navigate(['/fund-transfer']);
   }
 }
